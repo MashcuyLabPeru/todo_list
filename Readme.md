@@ -8,7 +8,19 @@ This project is an implementation of a todo list build with:
 - Backend in Python
 - Database in PostgreSQL
 
-## Getting Started
+## Java Backend
+
+WIP
+
+## Node Backend
+
+This implementation is found in the folder `frontend/src/pages/api`.
+
+This backend is build with NextJS's API feature, it uses node and the `pg` library.
+
+It follows the repository pattern to allow the migration to other database engines (or memory storage).
+
+## Python Backend
 
 WIP
 
