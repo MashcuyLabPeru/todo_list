@@ -1,9 +1,8 @@
 import { TodoGetHandlerResponse, TodoItem } from '@/types';
-
-const ENDPOINT = '/api/todo';
+import { todoAPIEndpoints } from './config';
 
 export const fetchTodoItems = async (): Promise<TodoItem[]> => {
-  const response = await fetch(ENDPOINT);
+  const response = await fetch(todoAPIEndpoints.list());
   const data: TodoGetHandlerResponse = await response.json();
   return data.items;
 };

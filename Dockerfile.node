@@ -1,0 +1,10 @@
+FROM node:17.4.0-alpine as build
+
+WORKDIR /opt/app
+COPY frontend /opt/app
+ENV NODE_ENV production
+RUN yarn install --production --frozen-lockfile
+RUN yarn build
+EXPOSE 3000
+
+CMD ["yarn", "start"]

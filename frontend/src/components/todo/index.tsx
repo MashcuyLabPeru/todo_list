@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 import TodoForm from './Form';
 import TodoList from './List';
 
-let i = 0;
 const TodoApp: NextPage = () => {
   const [items, setItems] = useState<TodoItem[]>([]);
 
@@ -15,7 +14,6 @@ const TodoApp: NextPage = () => {
     refetch();
   }, []);
 
-  console.log('render', i++);
   return (
     <div className="flex w-full h-screen justify-center">
       <div className="flex justify-center w-full lg:w-1/2 bg-slate-100">

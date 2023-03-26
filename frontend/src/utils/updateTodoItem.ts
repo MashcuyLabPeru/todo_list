@@ -1,9 +1,8 @@
 import { TodoItem } from '@/types';
-
-const generateTodoEndpoint = (id: number) => `/api/todo/${id}/`;
+import { todoAPIEndpoints } from './config';
 
 export const updateTodoItem = async (todoItem: TodoItem) => {
-  await fetch(generateTodoEndpoint(todoItem.id), {
+  await fetch(todoAPIEndpoints.update(todoItem.id), {
     method: 'PUT',
     body: JSON.stringify(todoItem),
     headers: {

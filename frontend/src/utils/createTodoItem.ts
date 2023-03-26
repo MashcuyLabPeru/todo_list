@@ -1,10 +1,10 @@
-const ENDPOINT = '/api/todo';
+import { todoAPIEndpoints } from './config';
 
 export const createTodoItem = async (todoText: string) => {
   const payload = {
     text: todoText,
   };
-  await fetch(ENDPOINT, {
+  await fetch(todoAPIEndpoints.create(), {
     method: 'POST',
     body: JSON.stringify(payload),
     headers: {

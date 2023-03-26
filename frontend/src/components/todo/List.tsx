@@ -19,8 +19,6 @@ const TodoList: React.FC<TodoListProps> = ({ items, refetch }) => {
   const removeItem = (itemId: number) => {
     deleteTodoItem(itemId).finally(refetch);
   };
-  console.log('items', items);
-
   return (
     <div className="w-full">
       <div className="flex flex-row justify-between">

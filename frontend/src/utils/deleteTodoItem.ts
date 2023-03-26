@@ -1,7 +1,7 @@
-const generateTodoEndpoint = (id: number) => `/api/todo/${id}/`;
+import { todoAPIEndpoints } from './config';
 
 export const deleteTodoItem = async (todoItemId: number) => {
-  await fetch(generateTodoEndpoint(todoItemId), {
+  await fetch(todoAPIEndpoints.delete(todoItemId), {
     method: 'DELETE',
   });
 };

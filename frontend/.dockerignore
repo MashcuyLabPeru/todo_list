@@ -1,0 +1,7 @@
+.next
+next*
+node_modules
+.vscode
+.eslintrc.json
+.prettierrc.json
+.gitignore
