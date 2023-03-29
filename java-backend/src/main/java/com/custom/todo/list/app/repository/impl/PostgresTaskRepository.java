@@ -6,6 +6,7 @@ import com.custom.todo.list.app.jpa.model.TaskJpa;
 import com.custom.todo.list.app.jpa.repository.CrudTaskRepository;
 import com.custom.todo.list.app.model.Task;
 import com.custom.todo.list.app.repository.TaskRepository;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import org.springframework.stereotype.Component;
@@ -28,11 +29,10 @@ public class PostgresTaskRepository implements TaskRepository {
 
   @Override
   public List<Task> list() {
-    var tasksOpt = this.crudTaskRepository.findAllByCompleted(true);
-    if (tasksOpt.isEmpty()) {
-      return Collections.emptyList();
-    }
-    return TaskJpa.toListModel(tasksOpt.get());
+    var tasksIterable = this.crudTaskRepository.findAll();
+    List<Task> tasks = new ArrayList<>();
+    tasksIterable.forEach(task -> tasks.add(task.toModel()));
+    return tasks;
   }
 
   @Override

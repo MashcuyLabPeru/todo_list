@@ -6,3 +6,5 @@
 *.iws
 *.iml
 *.ipr
+
+java-backend/target

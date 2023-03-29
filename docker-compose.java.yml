@@ -1,0 +1,15 @@
+services:
+  app:
+    build:
+      dockerfile: Dockerfile.java
+    ports:
+      - 8000:8000
+    environment:
+      - NEXT_PUBLIC_API_HOST=http://localhost:8000
+      - POSTGRES_HOST=postgres
+      - POSTGRES_DB=todo_list
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=pa55word
+    depends_on:
+      - postgres
