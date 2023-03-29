@@ -10,7 +10,12 @@ This project is an implementation of a todo list build with:
 
 ## Java Backend
 
-WIP
+The implementation is found in the folder `java-backend`.
+
+This is a simple Spring boot API
+
+It follows good practices like: Dependency injection, Clean architecture, SOLID, google checkstyle
+and API validations.
 
 ## Node Backend
 
