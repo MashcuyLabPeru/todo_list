@@ -1,10 +1,13 @@
 package com.custom.todo.list.app.repository.impl;
 
 import com.custom.todo.list.app.dto.AddTaskRequest;
+import com.custom.todo.list.app.dto.UpdateTaskRequest;
 import com.custom.todo.list.app.jpa.model.TaskJpa;
 import com.custom.todo.list.app.jpa.repository.CrudTaskRepository;
 import com.custom.todo.list.app.model.Task;
 import com.custom.todo.list.app.repository.TaskRepository;
+import java.util.Collections;
+import java.util.List;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -21,5 +24,33 @@ public class PostgresTaskRepository implements TaskRepository {
     var task = TaskJpa.fromAddRequest(request);
     var registeredTask = this.crudTaskRepository.save(task);
     return registeredTask.toModel();
+  }
+
+  @Override
+  public List<Task> list() {
+    var tasksOpt = this.crudTaskRepository.findAllByCompleted(true);
+    if (tasksOpt.isEmpty()) {
+      return Collections.emptyList();
+    }
+    return TaskJpa.toListModel(tasksOpt.get());
+  }
+
+  @Override
+  public Task update(Long taskId, UpdateTaskRequest request) {
+    var taskOpt = this.crudTaskRepository.findById(taskId);
+    if (taskOpt.isEmpty()) {
+      throw new RuntimeException("Task not found."); // TODO add custom exceptions
+    }
+    var task = taskOpt.get();
+    task.setText(request.getText());
+    task.setCompleted(request.getCompleted());
+
+    var registeredTask = this.crudTaskRepository.save(task);
+    return registeredTask.toModel();
+  }
+
+  @Override
+  public void delete(Long taskId) {
+    this.crudTaskRepository.deleteById(taskId);
   }
 }

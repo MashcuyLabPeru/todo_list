@@ -6,6 +6,7 @@ import lombok.Getter;
 @Getter
 @Builder
 public class Task {
-  private Long id;
-  private String description;
+  private Integer id;
+  private String text;
+  private boolean completed;
 }
