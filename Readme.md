@@ -22,7 +22,13 @@ It follows the repository pattern to allow the migration to other database engin
 
 ## Python Backend
 
-WIP
+please improve this description 
+
+This implementation is located in the `python-backend` folder.
+
+This backend is built with FastApi feature, it uses python, psycopg2 and sqlalchemy library.
+
+This is a simple rest api that uses sql raw for transactions
 
 ## Makefile
 
